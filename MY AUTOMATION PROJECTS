@@ -1,9 +1,39 @@
 # Python Automation Projects
 
-A collection of small Python automation scripts I built to practice automation and file handling.
+A collection of small Python automation scripts I built to practice automation, file handling, and practical utilities.
+
+---
 
 ## 📂 Projects
-- *File Organizer* → Sorts PDFs and Videos into subfolders.
-- *File Renamer* → Renames files in bulk with a clean sequence.
 
-Each project has its own README with setup and usage instructions.
+- **File Organizer** → Sorts PDFs and Videos into subfolders automatically.  
+- **File Renamer** → Renames files in bulk with a clean sequence.  
+- **Password Generator** → Generates strong random passwords with letters, numbers, and symbols.  
+- **Expense Tracker** → Track your daily expenses, view summaries, and export/import CSV.  
+
+---
+
+Each project has its own folder with:
+- The main Python script  
+- A README.md file with setup and usage instructions  
+
+---
+
+## 🚀 How to Run
+1. Clone this repo:
+   ```bash
+   git clone https://github.com/zaidkhan-automation/python-automation-projects.git
+   cd python-automation-projects
+   ```
+2. Open the desired project folder.  
+3. Run:
+   ```bash
+   python script_name.py
+   ```
+
+---
+
+## 🔮 Future Projects
+- Weather App (using OpenWeatherMap API)  
+- To-Do List (CLI/GUI)  
+- Expense Tracker with charts (matplotlib)
