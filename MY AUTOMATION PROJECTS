@@ -1,0 +1,9 @@
+# Python Automation Projects
+
+A collection of small Python automation scripts I built to practice automation and file handling.
+
+## 📂 Projects
+- *File Organizer* → Sorts PDFs and Videos into subfolders.
+- *File Renamer* → Renames files in bulk with a clean sequence.
+
+Each project has its own README with setup and usage instructions.
