@@ -1,0 +1,25 @@
+# Python
+_pycache_/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+.venv/
+*.egg-info/
+
+# Environment / secrets
+.env
+.env.*
+secrets.json
+
+# Vector DB / Chroma / FAISS
+chroma_db/
+*.db
+*.sqlite
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

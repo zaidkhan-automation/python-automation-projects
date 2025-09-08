@@ -1,0 +1,59 @@
+<script>
+const BACKEND = "http://localhost:8000"; // Backend API base URL
+const chat = document.getElementById("chat");
+const queryEl = document.getElementById("query");
+const apiEl = document.getElementById("apiKey");
+const nsEl = document.getElementById("namespace");
+
+function addMessage(text, who = "bot", meta = "") {
+  const d = document.createElement("div");
+  d.className = "msg " + (who === "user" ? "user" : "bot");
+
+  // ✅ Safer way, avoids VS Code red underline
+  let safeText = text.replace(/\n/g, "<br/>");
+  d.innerHTML = "<div>" + safeText + "</div><div class='meta'>" + meta + "</div>";
+
+  chat.appendChild(d);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+document.getElementById("ask").onclick = async () => {
+  const q = queryEl.value.trim();
+  if (!q) return;
+  const key = apiEl.value.trim();
+  if (!key) {
+    addMessage("⚠ Missing API key", "bot");
+    return;
+  }
+
+  addMessage(q, "user", "");
+  queryEl.value = "";
+  addMessage("Thinking...", "bot");
+
+  try {
+    const res = await fetch(BACKEND + "/query", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-KEY": key
+      },
+      body: JSON.stringify({ query: q, namespace: nsEl.value || "agency" })
+    });
+
+    // Remove "Thinking..."
+    const nodes = document.querySelectorAll("#chat .msg.bot");
+    if (nodes.length) nodes[nodes.length - 1].remove();
+
+    if (!res.ok) {
+      const err = await res.text();
+      addMessage("❌ Error: " + err, "bot");
+      return;
+    }
+
+    const data = await res.json();
+    addMessage(data.answer, "bot", "Retrieved: " + (data.retrieved?.length || 0));
+  } catch (err) {
+    addMessage("❌ Network error: " + err.toString(), "bot");
+  }
+};
+</script>
